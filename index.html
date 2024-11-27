@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html>
-	<head>
-        <meta charset="utf-8">
-		<title>World Database Lookup</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Database Lookup</title>
 
-		<!-- you can modify this as needed or to your preference -->
-		<<link rel="stylesheet" href="world.css">/>
+    <!-- Link to external stylesheet (world.css) -->
+    <link rel="stylesheet" href="world.css">
 
-		<!-- you write this -->
-		<script src="world.js" type="text/javascript"></script>
-	</head>
+    <!-- Link to external JavaScript file (world.js) -->
+    <script src="world.js" type="text/javascript"></script>
+</head>
+<body>
+    <header>
+        <!-- Adding the globe image beside the heading -->
+        <h1>
+			<img src="pinkglobe.jpg.webp" alt="Globe Icon"> World Database Lookup
+		</h1>		
+    </header>
 
-	<body>
-		<header>
-			<h1>World Database Lookup</h1>
-		</header>
+    <main>
+        <div class="search-container">
+            <label for="country">Country:</label>
+            <input id="country" type="search" name="country" placeholder="Enter country name" />
 
-		<main>
-			<div id="controls">
-				<label for="country">Country:</label>
-				<input id="country" type="search" name="country" placeholder="Enter country name" />
-				<button id="lookup">Lookup</button>
-			</div>
-			
-			<div id="result">
-				<!-- countries will appear here -->
-			</div>
-		</main>
+            <!-- Button to lookup country information -->
+            <button id="lookup">Lookup Country</button>
 
-	</body>
+            <!-- Button to lookup cities in the selected country -->
+            <button type="button" id="lookup-cities">Lookup Cities</button>
+        </div>
+
+        <!-- This is where results (countries or cities) will be displayed -->
+        <div id="result">
+            <!-- The results will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+</body>
 </html>

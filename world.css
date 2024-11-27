@@ -1,86 +1,122 @@
-/* General Body Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+/* Importing Google Fonts (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+/* Resetting some default styles */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #f8bbd0 0%, #ec407a 100%); /* Pink gradient background */
+    color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
+}
+
+/* Styling for the header */
+header {
     text-align: center;
+    padding: 20px;
 }
 
-/* Heading Styles */
-h1 {
-    font-size: 2.5rem;
+/* Header title */
+header h1 {
+    font-size: 2.8rem;
+    color: #ff4081; /* Pinkish color */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #333;
     margin-bottom: 20px;
-    color: #333;
 }
 
-/* Container for the search area */
+/* Styling for the image beside the title */
+header img {
+    width: 80px; /* Adjust size of the globe image */
+    height: auto;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* Container for the search input and buttons */
 .search-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 90%;
     max-width: 500px;
-    margin: 20px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Input field for country search */
+.search-container:hover {
+    transform: scale(1.02);
+}
+
+/* Styling for the input field */
 #country {
-    width: 80%;
-    padding: 12px 20px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ff4081;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
     outline: none;
-    box-sizing: border-box;
+    background: #ffe0e6;
+    transition: border-color 0.3s;
 }
 
 #country:focus {
-    border-color: #007BFF;
+    border-color: #ec407a;
 }
 
-/* Button for the search action */
-#lookup {
-    padding: 12px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007BFF;
+/* Styling for the lookup button */
+#lookup, #lookup-cities {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(135deg, #f06292, #ec407a); /* Gradient pink */
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    text-shadow: 1px 1px 2px #000;
+    transition: background 0.3s ease, transform 0.1s;
 }
 
-#lookup:hover {
-    background-color: #0056b3;
+#lookup:hover, #lookup-cities:hover {
+    background: linear-gradient(135deg, #ec407a, #f06292);
+}
+
+#lookup:active, #lookup-cities:active {
+    transform: scale(0.97);
 }
 
 /* Results Section */
 #result {
-    margin-top: 20px;
+    font-size: 1.2em;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    min-height: 100px;
-    max-width: 500px;
-    width: 90%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    border: 2px solid #ff4081; /* Light pink border */
+    border-radius: 10px;
+    background: #f48fb1; /* Soft pink background */
     color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
 }
 
 #result p {
-    font-size: 1.2rem;
     margin: 8px 0;
 }
 
@@ -97,7 +133,7 @@ h1 {
         padding: 20px;
     }
 
-    #country, #lookup {
+    #country, #lookup, #lookup-cities {
         width: 100%;
         margin: 10px 0;
     }
