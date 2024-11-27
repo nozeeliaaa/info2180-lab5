@@ -1,46 +1,39 @@
-document.getElementById('lookup').addEventListener('click', function() {
-    // Get the country name from the input field
-    let country = document.getElementById('country').value.trim(); // Remove extra spaces
+function searchList() {
+    var result = document.getElementById("result");
+    var countryInput = document.getElementById("country");
+    var countryName = countryInput.value.trim(); // Get and clean the input value
 
-    // Create a new XMLHttpRequest object
-    let xhr = new XMLHttpRequest();
-
-    // Prepare the URL with the country name as a query parameter
-    let url = 'world.php?country=' + encodeURIComponent(country);
-
-    // If no country is entered, we fetch all countries
-    if (country === '') {
-        url = 'world.php'; // No country specified, fetch all countries
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            if (req.status === 200) {
+                // If the request is successful, update the result div
+                result.innerHTML = req.responseText;
+            }
+            if (req.responseText.includes('No results found')) {
+                // If no results found, display a custom message
+                result.innerHTML = `<p style="color: red; font-weight: bold;">No countries found</p>`;
+            } else {
+                console.log("There seems to be an error!");
+            }
+        }
     }
 
-    // Set up the request
-    xhr.open('GET', url, true);
+    // Send the request with the country name (trimmed of extra spaces)
+    req.open("GET", `world.php?country=${encodeURIComponent(countryName)}`, true);
+    req.send();
+}
 
-    // Define what to do when the request completes
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // Parse the JSON response
-            let results = JSON.parse(xhr.responseText);
+window.onload = function() {
+    console.log("Page successfully loaded");
+    var lookupButton = document.getElementById("lookup");
+    lookupButton.addEventListener("click", searchList);
 
-            // Get the result div
-            let resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = ''; // Clear previous results
-
-            if (results.length > 0) {
-                // Loop through the results and display them
-                results.forEach(function(row) {
-                    let listItem = document.createElement('p');
-                    listItem.textContent = row.name + ' is ruled by ' + row.head_of_state;
-                    resultDiv.appendChild(listItem);
-                });
-            } else {
-                resultDiv.innerHTML = 'No results found.';
-            }
-        } else {
-            console.error('Request failed with status: ' + xhr.status);
+    var countryInput = document.getElementById("country");
+    countryInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            searchList(); // Trigger the search function
         }
-    };
-
-    // Send the request
-    xhr.send();
-});
+    });
+};
