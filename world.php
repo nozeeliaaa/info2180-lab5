@@ -45,8 +45,32 @@ if ($lookup == 'cities' && !empty($country)) {
         echo "<p id='not-found' style='color: red;'>No cities found.</p>";
     }
 } else {
-    // If no lookup is set, return countries as normal
-    if (!empty($country)) {
+    // If the country is empty, fetch all countries
+    if (empty($country)) {
+        $stmt = $conn->prepare("SELECT * FROM countries"); // Fetch all countries if no country is specified
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($results)) {
+            echo "<table border='1'>";
+            echo "<thead><tr><th>Name</th><th>Continent</th><th>Independence Year</th><th>Head of State</th></tr></thead>";
+            echo "<tbody>";
+
+            foreach ($results as $row) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['name'] ?? '') . "</td>";
+                echo "<td>" . htmlspecialchars($row['continent'] ?? '') . "</td>";
+                echo "<td>" . htmlspecialchars($row['independence_year'] ?? '') . "</td>";
+                echo "<td>" . htmlspecialchars($row['head_of_state'] ?? '') . "</td>";
+                echo "</tr>";
+            }
+
+            echo "</tbody></table>";
+        } else {
+            echo "<p id='not-found' style='color: red;'>No countries found.</p>";
+        }
+    } else {
+        // If the country is not empty, search for the country
         $stmt = $conn->prepare("SELECT * FROM countries WHERE name LIKE :country");
         $stmt->execute(['country' => "%$country%"]);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -32,13 +32,29 @@ window.onload = function() {
     // Country lookup button event listener
     var lookupButton = document.getElementById("lookup");
     lookupButton.addEventListener("click", function() {
-        searchList('country');  // Trigger country search
+        var countryInput = document.getElementById("country");
+        var countryName = countryInput.value.trim();
+        
+        // Only trigger the search if the country input is empty
+        if (countryName === "") {
+            searchList('country');  // Trigger country search when search bar is empty
+        } else {
+            searchList('country');  // Trigger country search otherwise
+        }
     });
 
     // Cities lookup button event listener
     var lookupCitiesButton = document.getElementById("lookup-cities");
     lookupCitiesButton.addEventListener("click", function() {
-        searchList('cities');  // Trigger cities search
+        var countryInput = document.getElementById("country");
+        var countryName = countryInput.value.trim();
+
+        // Trigger city search only if the country input is not empty
+        if (countryName !== "") {
+            searchList('cities');  // Trigger cities search
+        } else {
+            alert("Please enter a country name to look up cities.");
+        }
     });
 
     // Allow the user to press 'Enter' for a country search
@@ -46,7 +62,14 @@ window.onload = function() {
     countryInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Prevent form submission
-            searchList('country');  // Trigger country search
+            var countryName = countryInput.value.trim();
+            
+            // If the country input is empty, perform a general country search
+            if (countryName === "") {
+                searchList('country');
+            } else {
+                searchList('country'); // Otherwise, perform the country search
+            }
         }
     });
 };

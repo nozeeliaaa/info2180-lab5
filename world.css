@@ -1,18 +1,14 @@
-/* Importing Google Fonts (Poppins) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-/* Resetting some default styles */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Body styling */
+/* Body Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at center, #f8bbd0 0%, #ec407a 100%); /* Pink gradient background */
-    color: #f5f5f5;
+    background: radial-gradient(circle at center, #f06292 0%, #f48fb1 100%); /* Pink gradient background */
+    color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,121 +16,143 @@ body {
     flex-direction: column;
 }
 
-/* Styling for the header */
+/* Header Section */
 header {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
+    background-color: #f8bbd0; /* Light pink background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-/* Header title */
 header h1 {
-    font-size: 2.8rem;
-    color: #ff4081; /* Pinkish color */
+    font-size: 2.5em;
+    color: #f00080; 
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 2px 2px #333;
-    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling for the image beside the title */
-header img {
-    width: 80px; /* Adjust size of the globe image */
-    height: auto;
-    margin-left: 10px;
-    vertical-align: middle;
+header h1 img {
+    width: 100px;  /* Size of the image */
+    height: 100px; /* Equal to width to create a square */
+    border-radius: 50%; /* Makes the image circular */
+    vertical-align: middle;  /* Align the image vertically with the text */
+    margin-right: 10px;
 }
 
-/* Container for the search input and buttons */
+#image-section {
+    width: 100%;
+    background-image: url('pinkglobe.jpg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    margin-bottom: 70px;
+}
+
+#image-section h2 {
+    font-size: 2.2em;
+    font-weight: 500;
+    color: #f00080;
+    margin-bottom: 15px;
+}
+
+/* Container for the search area */
 .search-container {
-    max-width: 500px;
-    width: 100%;
-    background: #ffffff;
+    background-color: #ffffff;
     border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.search-container:hover {
-    transform: scale(1.02);
-}
-
-/* Styling for the input field */
+/* Input and Button Styles */
 #country {
-    width: 100%;
-    height: 50px;
-    border: 2px solid #ff4081;
-    border-radius: 8px;
-    padding: 10px 15px;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    color: #333;
+    width: 80%;
+    padding: 12px 20px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
     outline: none;
-    background: #ffe0e6;
-    transition: border-color 0.3s;
+    box-sizing: border-box;
+    background-color: #ffe0e0;
 }
 
 #country:focus {
-    border-color: #ec407a;
+    border-color: #f00080;
 }
 
-/* Styling for the lookup button */
 #lookup, #lookup-cities {
-    display: inline-block;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(135deg, #f06292, #ec407a); /* Gradient pink */
-    border: none;
-    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
     color: #fff;
-    font-size: 1.2em;
-    font-weight: 600;
+    background-color: #f00080;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    text-shadow: 1px 1px 2px #000;
-    transition: background 0.3s ease, transform 0.1s;
+    margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
 #lookup:hover, #lookup-cities:hover {
-    background: linear-gradient(135deg, #ec407a, #f06292);
-}
-
-#lookup:active, #lookup-cities:active {
-    transform: scale(0.97);
+    background-color: #fec6f0;
 }
 
 /* Results Section */
 #result {
-    font-size: 1.2em;
-    padding: 20px;
-    border: 2px solid #ff4081; /* Light pink border */
-    border-radius: 10px;
-    background: #f48fb1; /* Soft pink background */
-    color: #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    padding: 20px;
+    background-color: #f8bbd0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Center the table */
+table {
+    margin: 20px auto; /* Centers the table horizontally */
+    border-collapse: collapse; /* Collapses the borders of the table */
+    width: 80%; /* Adjust the table width */
+}
+
+/* Table header styles */
+th {
+    background-color: #f00080;
+    color: white;
+    padding: 12px;
     text-align: center;
 }
 
-#result p {
-    margin: 8px 0;
+/* Table data styles */
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
-/* Styling for when no results are found */
-#result.no-results {
-    color: #ff6b6b;
-    font-style: italic;
-}
-
-/* Responsive Styles */
 @media (max-width: 600px) {
     .search-container {
         width: 90%;
         padding: 20px;
     }
 
-    #country, #lookup, #lookup-cities {
+    #country, #lookup {
         width: 100%;
         margin: 10px 0;
+    }
+
+    table {
+        width: 100%; /* Make table responsive on smaller screens */
     }
 }
